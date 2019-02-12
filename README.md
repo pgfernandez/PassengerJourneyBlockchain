@@ -1,4 +1,4 @@
-# PassengerJourneyBlockchain
+# A Passenger Journey Blockchain
 A demo of Blockchain for a Passenger Journey with Hyperledger Composer.
 From the article https://aeriaa.com/passenger-journey-with-blockchain/
 
