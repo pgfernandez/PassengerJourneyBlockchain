@@ -1,0 +1,270 @@
+/**
+* PaxJourney's Model POC
+*/
+
+namespace org.aeriaa.paxjourney
+
+/**
+* Enumerated Types
+ */
+
+enum publicTransportTypes {
+  o BUS
+  o TRAIN
+  o TAXI
+  o UBER
+  o BICYCLE
+  o SUBWAY
+  o CAR2GO
+}
+
+enum bagStatus {
+  o NO_STATUS
+  o CHECKED
+  o DEPARTURE_PROCESSED
+  o BOARDED
+  o UNLOADED
+  o ARRIVAL_PROCESSED
+}
+
+enum airportPaxStatus {
+  o NO_STATUS
+  o ONGOING
+  o ARRIVED
+  o CHECKIN
+  o SECURITY
+  o DWELL_TIME
+  o BOARDING
+  o BAGGAGE_CLAIM
+  o LEAVING
+}
+
+
+enum flightStatus {
+  o ONTIME
+  o DELAYED
+  o CANCELLED
+  o AIRBORNE
+  o ENROUTE
+  o LANDED
+  o SCHEDULED
+}
+
+enum accommodationPaxStatus {
+  o NO_STATUS
+  o NOSHOW
+  o CHECKED
+  o CHECKED_OUT
+}
+
+enum accommodationTypes {
+  o HOTEL
+  o AIRBNB
+}
+
+
+
+/**
+* Concepts
+ */
+
+abstract concept PaxFee{
+ o String idFee
+ o Double fee
+ o String feeConcept
+}
+
+concept PaxBookingFee extends PaxFee {
+  o String bookingConcept
+}
+
+concept AirNavigationFee extends PaxFee {
+  o String navigationConcept
+}
+
+concept PaxAirportFee extends PaxFee {
+  o String airportConcept
+}
+
+concept PaxAirlineFee extends PaxFee {
+  o String bookingConcept
+}
+
+concept PaxTransportFee extends PaxFee {
+  o String transportConcept
+}
+
+
+
+/**
+* Participants
+ */
+
+participant User identified by idUser {
+    o String idUser 
+}
+
+participant Airline extends User {
+   o String idAirline
+   o String name
+   o String country
+}
+
+participant AirNavigationServiceProvider extends User {
+   o String idANSP
+   o String name
+}
+
+participant Passenger extends User {
+   o String idPax
+   o String name
+   o String surname
+   o String nationality
+}
+
+participant Booker extends User {
+  o String idBooker
+  o String name
+}
+
+
+participant Airport extends User {
+   o String idAirport
+   o String name
+   o String country
+ }
+
+
+participant Accommodation extends User {
+   o String idAccommodation
+   o String name
+   o String category
+   o String city
+   o String country
+   o accommodationTypes accommodationType
+ }
+
+participant PublicTransport extends User {
+  o String idPublicTransport
+  o String name
+  o publicTransportTypes transport
+ }
+
+
+
+/**
+* Assets
+ */
+
+asset Baggage identified by idBaggage {
+  o String idBaggage
+  o String bsm
+  o bagStatus status
+}
+
+
+asset Fligth identified by idFlight {
+   o String idFlight
+   o String origin
+   o String destination
+   o DateTime departureDate
+   o DateTime arrivalDate
+   o flightStatus status
+}
+
+
+asset Trip identified by idTrip {
+   o String idTrip
+   o String origin
+   o String destination
+   o String description
+   o DateTime fromDate
+   o DateTime toDate
+   --> Passenger [] paxs
+ }
+
+asset Booking identified by idBooking {
+   o String idBooking
+   --> Passenger pax
+   --> Fligth fligth
+   --> Accommodation accommodation
+   --> PublicTransport transport
+ }
+
+asset Wallet identified by idWallet {
+   o String idWallet
+   o Double amount
+   --> User owner 
+}
+
+
+/**
+* Transactions
+ */
+
+ transaction makeReservation {
+   o String idBooking
+   --> Passenger pax
+   --> Fligth fligth
+   --> Accommodation accommodation
+   --> PublicTransport transport
+   --> Wallet sender
+   --> Wallet receiver
+   o PaxBookingFee payment
+  }
+
+transaction updatePaxStatus {
+  o String idPaxStatus
+  --> Passenger [] paxs
+}
+
+transaction checkBaggage {
+  o String idCheckinBaggage
+  --> Passenger [] paxs
+  --> Baggage [] bags
+}
+
+transaction airportSecurityCheckin {
+  o String idSecurityCheckin
+  --> Airport airport
+  --> Passenger pax
+}
+
+transaction airportCustoms {
+  o String idCustoms
+  --> Airport airport
+  --> Passenger pax
+}
+
+transaction boarding {
+  o String idBoarding
+  --> Passenger pax
+  --> Fligth flight
+}
+
+transaction accommodationCheckin {
+  o String idHotelCheckin
+  --> Passenger pax
+  --> Accommodation accommodation
+}
+
+transaction ridePublicTransport {
+  o String idRidePublicTransport
+  --> Passenger pax
+  --> PublicTransport publicTransport
+}
+
+transaction payNavigationFee {
+ --> Wallet sender
+ --> Wallet receiver
+ o Double fee
+}
+
+
+/**
+* Events
+ */
+
+event TransactionCompleted {
+  o String msg
+}

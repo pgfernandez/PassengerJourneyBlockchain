@@ -1,0 +1,8 @@
+{
+  "$class": "org.aeriaa.paxjourney.Booking",
+  "idBooking": "1",
+  "pax": "resource:org.aeriaa.paxjourney.Passenger#1353",
+  "fligth": "resource:org.aeriaa.paxjourney.Fligth#IB3721",
+  "accommodation": "resource:org.aeriaa.paxjourney.Accommodation#0510",
+  "transport": "resource:org.aeriaa.paxjourney.PublicTransport#UBER"
+}

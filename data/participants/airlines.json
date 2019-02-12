@@ -1,0 +1,18 @@
+
+[
+    {
+  "$class": "org.aeriaa.paxjourney.Airline",
+  "idAirline": "KML",
+  "name": "Royal Dutch Airlines",
+  "country": "Netherlands",
+  "idUser": "0812"
+},
+
+{
+  "$class": "org.aeriaa.paxjourney.Airline",
+  "idAirline": "IBE",
+  "name": "Iberia Líneas Aéreas",
+  "country": "Spain",
+  "idUser": "2285"
+}
+]

@@ -1,0 +1,14 @@
+[
+    {
+  "$class": "org.aeriaa.paxjourney.Wallet",
+  "idWallet": "4294",
+  "amount": 3000200.99,
+  "owner": "resource:org.aeriaa.paxjourney.User#2583"
+},
+{
+  "$class": "org.aeriaa.paxjourney.Wallet",
+  "idWallet": "9875",
+  "amount": 799.01,
+  "owner": "resource:org.aeriaa.paxjourney.User#2285"
+}
+]

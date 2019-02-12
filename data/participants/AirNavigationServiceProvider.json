@@ -1,0 +1,6 @@
+{
+  "$class": "org.aeriaa.paxjourney.AirNavigationServiceProvider",
+  "idANSP": "NATS",
+  "name": "NATS",
+  "idUser": "2583"
+}

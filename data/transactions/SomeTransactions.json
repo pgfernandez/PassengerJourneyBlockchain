@@ -1,0 +1,42 @@
+[
+    {
+ "$class": "org.aeriaa.paxjourney.payNavigationFee",
+ "sender": "resource:org.aeriaa.paxjourney.Wallet#9875",
+ "receiver": "resource:org.aeriaa.paxjourney.Wallet#4294",
+ "fee": 200.99,
+ "transactionId": "64894780-e404-4313-9044-913124e5781f",
+ "timestamp": "2018-05-19T22:48:47.606Z"
+},
+{
+ "$class": "org.hyperledger.composer.system.UpdateAsset",
+ "resources": [
+  {
+   "$class": "org.aeriaa.paxjourney.Wallet",
+   "idWallet": "9875",
+   "amount": 1000,
+   "owner": "resource:org.aeriaa.paxjourney.User#2285"
+  }
+ ],
+ "targetRegistry": "resource:org.hyperledger.composer.system.AssetRegistry#org.aeriaa.paxjourney.Wallet",
+ "transactionId": "af8fe4d8-738b-43fb-bf6f-22bb90e5ffa1",
+ "timestamp": "2018-05-19T22:37:50.016Z"
+},
+{
+ "$class": "org.hyperledger.composer.system.AddAsset",
+ "resources": [
+  {
+   "$class": "org.aeriaa.paxjourney.Fligth",
+   "idFlight": "IB3721",
+   "origin": "AMS",
+   "destination": "MAD",
+   "departureDate": "2018-05-07T05:35:00.000Z",
+   "arrivalDate": "2018-05-05T08:15:00.000Z",
+   "status": "SCHEDULED"
+  }
+ ],
+ "targetRegistry": "resource:org.hyperledger.composer.system.AssetRegistry#org.aeriaa.paxjourney.Fligth",
+ "transactionId": "97bc421f-0386-4d05-b965-7cf65ba29866",
+ "timestamp": "2018-05-05T17:11:25.948Z"
+}
+
+]

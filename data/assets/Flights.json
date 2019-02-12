@@ -1,0 +1,20 @@
+[
+    {
+  "$class": "org.aeriaa.paxjourney.Fligth",
+  "idFlight": "IB3721",
+  "origin": "AMS",
+  "destination": "MAD",
+  "departureDate": "2018-05-07T05:35:00.000Z",
+  "arrivalDate": "2018-05-05T08:15:00.000Z",
+  "status": "SCHEDULED"
+},
+{
+  "$class": "org.aeriaa.paxjourney.Fligth",
+  "idFlight": "IB3722",
+  "origin": "MAD",
+  "destination": "AMS",
+  "departureDate": "2018-05-05T05:50:00.000Z",
+  "arrivalDate": "2018-05-05T08:25:00.000Z",
+  "status": "SCHEDULED"
+}
+]
